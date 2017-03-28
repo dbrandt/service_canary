@@ -17,6 +17,8 @@ Beyond API testing you might want to install:
 Configuration is done via environment variables or command line options. The environment variables looked for look like this:
 ```
 CANARY_DB_<n>_TYPE
+CANARY_DB_<n>_HOST
+CANARY_DB_<n>_PORT
 CANARY_DB_<n>_USER
 CANARY_DB_<n>_PASS
 CANARY_DB_<n>_DB_NAME
@@ -24,8 +26,10 @@ CANARY_DB_<n>_TEST_QUERY
 CANARY_API_<n>_URL
 CANARY_API_<n>_TOKEN
 CANARY_API_<n>_ENDPOINT
-CANARY_MEMCACHED_<n>
-CANARY_RABBITMQ_<n>
+CANARY_MEMCACHED_HOST
+CANARY_MEMCACHED_PORT
+CANARY_RABBITMQ_HOST
+CANARY_RABBITMQ_PORT
 ```
 
 The <n> denotes a number, this is so you can test several nodes or several databases at once. You translate this to command line arguments by stripping the `CANARY_` prefix and making it lowercase: `CANARY_DB_1_TYPE` becomes `--db-1-type` and so on.
