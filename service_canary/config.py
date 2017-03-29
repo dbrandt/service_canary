@@ -41,13 +41,15 @@ def _extract_rabbit(config):
     return ret
 
 
-db_re = re.compile("db_\d+")
-db_prefixes = set([x.group(0) for x in map(db_re.search, config.keys())
-                   if x is not None])
+def _get_prefixes(regex, keys):
+    return set([x.group(0) for x in map(regex.search, keys)
+                if x is not None])
 
+db_re = re.compile("db_\d+")
 api_re = re.compile("api_\d+")
-api_prefixes = set([x.group(0) for x in map(api_re.search, config.keys())
-                    if x is not None])
+
+db_prefixes = _get_prefixes(db_re, config.keys())
+api_prefixes = _get_prefixes(api_re, config.keys())
 
 db = {}
 api = {}
@@ -65,9 +67,11 @@ for pfx in api_prefixes:
         api[pfx] = api_conf
 
 
-print(db)
-print(api)
-print(mc)
-print(rabbit)
+config = {
+    "db": db,
+    "api": api,
+    "mc": mc,
+    "rabbit": rabbit
+    }
 
 
