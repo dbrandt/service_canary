@@ -16,7 +16,7 @@ def _run_db_check(conf):
         raise DBCheckError("can't check DB without knowing DB type")
 
     if dbtype == "riak":
-        from .db.riak import riak_check
+        from .db.riak_check import riak_check
         return riak_check(conf)
     elif dbtype == "postgres":
         from .db.postgres import pg_check
@@ -55,7 +55,7 @@ def run_checks(conf):
     if conf.get("mc"):
         result["mc"] = _run_mc_check(conf.get("mc", {}))
     if conf.get("rabbit"):
-        result["rabbit"] = _run_mc_check(conf.get("rabbit", {}))
+        result["rabbit"] = _run_rabbit_check(conf.get("rabbit", {}))
 
     return result
 
