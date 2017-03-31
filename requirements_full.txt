@@ -1,4 +1,7 @@
 requests
 riak
 psycopg2
-
+pymemcache
+pika
+flask
+gunicorn

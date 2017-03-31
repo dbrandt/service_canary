@@ -6,6 +6,7 @@ setup_kwargs = {
     "version": "0.1beta1",
     "description": "A simple app that checks connectivity to other services.",
     "packages": find_packages(exclude=("*.tests",)),
+    "scripts": ["bin/canary"],
     "install_requires": [x.strip() for x in open("requirements.txt")
                          if not (x.strip().startswith("--") or
                                  x.strip().startswith("#")) and x.strip()],

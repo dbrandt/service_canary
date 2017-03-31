@@ -1,0 +1,29 @@
+---
+- name: Set up vagrant
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add docker repo keys
+      apt_key:
+        keyserver=eu.pool.sks-keyservers.net
+        id=58118E89F3A912897C070ADBF76221572C52609D
+        
+    - name: Add docker apt repo
+      apt_repository:
+        repo="deb https://apt.dockerproject.org/repo debian-jessie main"
+    
+    - name: Add apt packages
+      apt:
+        name={{ item }}
+        state=latest
+        update_cache=yes
+        cache_valid_time=3600
+      with_items:
+        - docker-engine
+        - python-dev
+        - libpq-dev
+        
+    - name: Ensure docker is up
+      service:
+        name=docker
+        state=started

@@ -11,7 +11,7 @@ Beyond API testing you might want to install:
 * if you want to test RabbitMQ
 * `psycopg2` if you want to test PostgreSQL
 * `riak` if you want to test Riak/RiakTS
-* `python-memcache` if you wan to test `memcached`
+* `pymemcache` if you wan to test `memcached`
 
 ## Configuration
 Configuration is done via environment variables or command line options. The environment variables looked for look like this:

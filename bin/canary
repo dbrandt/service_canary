@@ -1,0 +1,4 @@
+#!/usr/bin/env python
+# -*- lang: python -*-
+from service_canary.app import cli_app
+cli_app()
