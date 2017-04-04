@@ -12,9 +12,12 @@ def _split_arg(arg):
     if "=" not in arg:
         raise ArgumentError(
             "commandline arguments must be on the form --db-1-host=localhost")
-    return arg.split("=")
+    k, v = arg.split("=")
+    k = k.replace("-", "_")
+    return (k, v)
 
-args = [x.replace("--", "").replace("-", "_").lower()
+
+args = [x.replace("--", "").lower()
         for (x) in sys.argv[1:] if x.startswith("--")]
 
 if "config" in args:
