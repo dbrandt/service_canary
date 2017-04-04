@@ -17,7 +17,7 @@ def _split_arg(arg):
     return (k, v)
 
 
-args = [x.replace("--", "").lower()
+args = [x.replace("--", "")
         for (x) in sys.argv[1:] if x.startswith("--")]
 
 if "config" in args:
